@@ -1,0 +1,125 @@
+body {
+  background-image: url(https://images.pexels.com/photos/1029609/pexels-photo-1029609.jpeg?cs=srgb&dl=yellow-vines-on-gray-concrete-wall-1029609.jpg&fm=jpg);
+  background-size: cover;
+}
+header {
+  font-size: 25px;
+}
+footer {
+  font-size: 15px;
+  text-align: right;
+}
+h1,
+h2,
+.currentDayData {
+  font-family: "Nanum Gothic Coding", monospace;
+  color: #6a5a42;
+}
+
+header,
+footer {
+  font-family: "Architects Daughter", cursive;
+  color: #6a5a42;
+}
+
+h2 {
+  font-size: 25px;
+}
+
+form {
+  text-align: center;
+  padding: 10px;
+  margin: 5px auto 20px auto;
+  font-size: 20px;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  position: absolute;
+}
+
+.celciusFah {
+  font-size: 15px;
+}
+
+.currentDay {
+  margin: 20px auto 10px;
+}
+
+.currentDayData {
+  font-size: 16px;
+  text-align: left;
+}
+.nextDays {
+  text-align: center;
+  font-family: "Nanum Gothic Coding", monospace;
+  margin: 35px auto;
+}
+
+.weekDay {
+  color: #6a5a42;
+  font-size: 20px;
+}
+
+.tempDay {
+  color: #6a5a42;
+  font-size: 25px;
+}
+
+.boxShadow {
+  display: block;
+  background: white;
+  border-radius: 15px;
+  border: 2px solid #6a5a42;
+  margin: 4% 15%;
+  box-shadow: 15px 15px 25px rgba(0, 0, 0, 0.4);
+}
+
+.currentweatherEmogi {
+  font-size: 50px;
+  display: block;
+  text-align: right;
+  color: #f7ba49;
+}
+
+.weatherEmogi {
+  font-size: 35px;
+  text-align: center;
+  color: #f7ba49;
+}
+
+.searchCity,
+.searchCurrentLocation {
+  background-color: #faeeaa;
+  border: 2px solid #6a5a42;
+  border-radius: 3px;
+  color: #6a5a42;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.searchCity:hover,
+.searchCurrentLocation:hover {
+  background-color: #6a5a42;
+  border: 2px solid #faeeaa;
+  color: #faeeaa;
+  transition: all 200ms ease-in-out;
+  box-shadow: none;
+}
+
+.boxes {
+  background-color: rgba(186, 186, 186, 0.5);
+  margin: 10px;
+  padding: 0;
+  border-radius: 6px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+  border: 2px solid #f7ba49;
+}
+
+.inputCity {
+  border: 2px solid #6a5a42;
+  background-color: #faeeaa;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+}

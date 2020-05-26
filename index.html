@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>Wheater App 🙀</title>
+    <script
+      src="https://kit.fontawesome.com/05493d7f38.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Architects+Daughter|Nanum+Gothic+Coding&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="src/style.css" />
+  </head>
+  <body>
+    <span class="boxShadow">
+      <div class="container">
+        <header>
+          Saturday, 5:39pm
+        </header>
+        <div class="row currentDay">
+          <div class="col-2">
+            <span class="currentweatherEmogi">
+              <i class="fas fa-cloud-sun-rain"></i>
+            </span>
+          </div>
+          <div class="col-2">
+            <h1>
+              Lisbon
+            </h1>
+            <h2>
+              actualTemperature
+            </h2>
+            <span class="celciusFah">
+              <a href="#" id="celcius-temp">
+                ºC
+              </a>
+              /
+              <a href="#" id="fahrenheit-temp">
+                ºF
+              </a>
+            </span>
+          </div>
+          <div class="col-4">
+            <ul class="currentDayData">
+              <li>
+                Humidity:
+                <span id="current-humidity">
+                  77
+                </span>
+                %
+              </li>
+              <li>
+                Wind:
+                <span id="current-wind">
+                  8
+                </span>
+                Km/h
+              </li>
+            </ul>
+          </div>
+          <div class="col-4">
+            <img
+              src="https://i.pinimg.com/564x/87/27/f4/8727f4a7d79150fb3be67973248f1227.jpg"
+              alt="Intelectual Cat"
+              width="250px"
+            />
+          </div>
+        </div>
+        <form id="city-search-form">
+          <input
+            type="text"
+            placeholder="Enter city"
+            class="inputCity"
+            id="city-input-form"
+          />
+          <input type="submit" value="GO!" class="searchCity" />
+        </form>
+        <button class="searchCurrentLocation">
+          Current Location
+        </button>
+        <div class="row nextDays">
+          <div class="col boxes">
+            <span class="weekDay">
+              Sunday
+            </span>
+            <div class="tempDay">
+              17ºC
+            </div>
+            <div class="weatherEmogi">
+              <i class="fas fa-cloud-sun-rain"></i>
+            </div>
+          </div>
+          <div class="col boxes">
+            <span class="weekDay">
+              Monday
+            </span>
+            <div class="tempDay">
+              16ºC
+            </div>
+            <div class="weatherEmogi">
+              <i class="fas fa-cloud-sun"></i>
+            </div>
+          </div>
+          <div class="col boxes">
+            <span class="weekDay">
+              Tuesday
+            </span>
+            <div class="tempDay">
+              16ºC
+            </div>
+            <div class="weatherEmogi">
+              <i class="fas fa-cloud-sun"></i>
+            </div>
+          </div>
+          <div class="col boxes">
+            <span class="weekDay">
+              Wednesday
+            </span>
+            <div class="tempDay">
+              16ºC
+            </div>
+            <div class="weatherEmogi">
+              <i class="fas fa-sun"></i>
+            </div>
+          </div>
+          <div class="col boxes">
+            <span class="weekDay">
+              Thursday
+            </span>
+            <div class="tempDay">
+              16ºC
+            </div>
+            <div class="weatherEmogi">
+              <i class="fas fa-sun"></i>
+            </div>
+          </div>
+        </div>
+        <footer>
+          Open-source code, by Ana Almeida
+        </footer>
+      </div>
+    </span>
+    <script src="src/java.js"></script>
+  </body>
+</html>
