@@ -47,6 +47,10 @@ img {
   position: absolute;
 }
 
+input {
+  max-width: 50%;
+}
+
 .celciusFah {
   font-size: 15px;
 }
