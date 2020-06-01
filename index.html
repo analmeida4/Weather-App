@@ -27,19 +27,19 @@
         <header>
           Saturday, 5:39pm
         </header>
-        <div class="row currentDay">
+        <div class="row">
           <div class="col-2">
             <span class="currentweatherEmogi">
               <i class="fas fa-cloud-sun-rain"></i>
             </span>
           </div>
-          <div class="col-2">
+          <div class="col-6">
             <h1>
               Lisbon
             </h1>
-            <h2>
+            <span class="currentTemp">
               actualTemperature
-            </h2>
+            </span>
             <span class="celciusFah">
               <a href="#" id="celcius-temp">
                 ºC
@@ -51,6 +51,16 @@
             </span>
           </div>
           <div class="col-4">
+            <img
+              src="images/undraw_default.png"
+              alt="Default Image"
+              width="75%"
+            />
+          </div>
+        </div>
+        <div class="row currentDay">
+          <div class="col-1"></div>
+          <div class="col-10">
             <ul class="currentDayData">
               <li>
                 Humidity:
@@ -68,13 +78,6 @@
               </li>
             </ul>
           </div>
-          <div class="col-4">
-            <img
-              src="https://i.pinimg.com/564x/87/27/f4/8727f4a7d79150fb3be67973248f1227.jpg"
-              alt="Intelectual Cat"
-              width="250px"
-            />
-          </div>
         </div>
         <form id="city-search-form">
           <input
@@ -84,10 +87,11 @@
             id="city-input-form"
           />
           <input type="submit" value="GO!" class="searchCity" />
+          <button class="searchCurrentLocation">
+            Current Location
+          </button>
         </form>
-        <button class="searchCurrentLocation">
-          Current Location
-        </button>
+
         <div class="row nextDays">
           <div class="col boxes">
             <span class="weekDay">

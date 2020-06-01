@@ -31,7 +31,7 @@ header.innerHTML = `${currentDay}, ${currentHour[0]}:${currentMinutes} ${current
 // Code to give current Temperature in Celcius or Fahrenheit when clicked
 function getCelciusTemp() {
   event.preventDefault();
-  let h2 = document.querySelector("h2");
+  let h2 = document.querySelector(".currentTemp");
   h2.innerHTML = "17";
 }
 
@@ -40,7 +40,7 @@ showCelcius.addEventListener("click", getCelciusTemp);
 
 function getFahrenheitTemp() {
   event.preventDefault();
-  let h2 = document.querySelector("h2");
+  let h2 = document.querySelector(".currentTemp");
   h2.innerHTML = "63";
 }
 
@@ -50,7 +50,7 @@ showFahrenheit.addEventListener("click", getFahrenheitTemp);
 //Code to update name, temperature, humidity and wind on webpage according city user input
 function updateCity(result) {
   document.querySelector("h1").innerHTML = result.data.name;
-  document.querySelector("h2").innerHTML = Math.round(result.data.main.temp);
+  document.querySelector(".currentTemp").innerHTML = Math.round(result.data.main.temp);
   document.querySelector("#current-humidity").innerHTML =
     result.data.main.humidity;
   document.querySelector("#current-wind").innerHTML = Math.round(
