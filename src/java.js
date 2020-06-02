@@ -28,6 +28,18 @@ if (currentMinutes < 10) {
 let header = document.querySelector("header");
 header.innerHTML = `${currentDay}, ${currentHour[0]}:${currentMinutes} ${currentHour[1]}`;
 
+//Code to update next days according to current one
+function nextDays() {
+  for (let i = 1; i < 6; i++) {
+    let nextDay = days[now.getDay() + i];
+    if (now.getDay() + i > 6) {
+      nextDay = days[now.getDay() - 7];
+    }
+    document.querySelector(`#day-${i}`).innerHTML = `${nextDay}`;
+  }
+}
+
+nextDays();
 // Code to give current Temperature in Celcius or Fahrenheit when clicked
 function getCelciusTemp() {
   event.preventDefault();
@@ -50,7 +62,9 @@ showFahrenheit.addEventListener("click", getFahrenheitTemp);
 //Code to update name, temperature, humidity and wind on webpage according city user input
 function updateCity(result) {
   document.querySelector("h1").innerHTML = result.data.name;
-  document.querySelector(".currentTemp").innerHTML = Math.round(result.data.main.temp);
+  document.querySelector(".currentTemp").innerHTML = Math.round(
+    result.data.main.temp
+  );
   document.querySelector("#current-humidity").innerHTML =
     result.data.main.humidity;
   document.querySelector("#current-wind").innerHTML = Math.round(

@@ -63,6 +63,7 @@ input {
   font-size: 16px;
   text-align: left;
 }
+
 .nextDays {
   text-align: center;
   font-family: "Nanum Gothic Coding", monospace;
@@ -81,10 +82,11 @@ input {
 
 .boxShadow {
   display: block;
+  max-width: 800px;
   background: white;
   border-radius: 15px;
   border: 2px solid #2f2e41;
-  margin: 4% 15%;
+  margin: 3% auto;
   box-shadow: 15px 15px 25px rgba(0, 0, 0, 0.4);
 }
 
