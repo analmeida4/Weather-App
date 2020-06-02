@@ -31,10 +31,12 @@ header.innerHTML = `${currentDay}, ${currentHour[0]}:${currentMinutes} ${current
 //Code to update next days according to current one
 function nextDays() {
   for (let i = 1; i < 6; i++) {
-    let nextDay = days[now.getDay() + i];
-    if (now.getDay() + i > 6) {
-      nextDay = days[now.getDay() - 7];
+    let nextDayIndex = now.getDay() + i;
+    if (nextDayIndex > 6) {
+      nextDayIndex = now.getDay() + i - 7;
     }
+    let nextDay = days[nextDayIndex];
+    console.log(nextDayIndex);
     document.querySelector(`#day-${i}`).innerHTML = `${nextDay}`;
   }
 }
