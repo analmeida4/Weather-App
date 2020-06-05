@@ -1,53 +1,47 @@
 // Weather Icon Library
 let iconsLib = [
   {
-    iconName: "clear sky",
+    iconName: "800",
     class: "fas fa-sun",
   },
   {
-    iconName: "few clouds",
+    iconName: "8",
     class: "fas fa-cloud-sun",
   },
   {
-    iconName: "scattered clouds",
-    class: "fas fa-cloud",
-  },
-  {
-    iconName: "broken clouds",
-    class: "fas fa-cloud",
-  },
-  {
-    iconName: "shower rain",
+    iconName: "3",
     class: "fas fa-cloud-rain",
   },
   {
-    iconName: "light rain",
-    class: "fas fa-cloud-sun-rain",
-  },
-  {
-    iconName: "rain",
+    iconName: "5",
     class: "fas fa-cloud-showers-heavy",
   },
   {
-    iconName: "	thunderstorm",
+    iconName: "2",
     class: "fas fa-bolt",
   },
   {
-    iconName: "snow",
+    iconName: "6",
     class: "far fa-snowflake",
   },
   {
-    iconName: "mist",
+    iconName: "7",
     class: "fas fa-smog",
   },
 ];
 
 function updateIcon(description) {
-  for (i = 0; i < 10; i++) {
-    if (iconsLib[i].iconName == description) {
-      console.log(iconsLib[i].class);
+  let newVar = description.toString();
+  console.log(typeof newVar);
+  if (description == "800") {
+    return "fas fa-sun";
+  } else {
+    newVar = newVar.charAt(0);
+    console.log(newVar);
+  }
+  for (i = 1; i < 7; i++) {
+    if (iconsLib[i].iconName == newVar) {
       let newClass = `${iconsLib[i].class}`;
-      console.log(newClass);
       return newClass;
     }
   }
@@ -147,7 +141,7 @@ function updateCity(result) {
     result.data.weather[0].description;
   document
     .querySelector("#current-emoji")
-    .setAttribute("class", updateIcon(result.data.weather[0].description));
+    .setAttribute("class", updateIcon(result.data.weather[0].id));
 }
 
 let apiKey = "7682c2be43d876a63c355131eaac1953";
