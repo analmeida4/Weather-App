@@ -30,7 +30,7 @@
         <div class="row">
           <div class="col-2">
             <span class="currentweatherEmogi">
-              <i class="fas fa-cloud-sun-rain"></i>
+              <i class="fas fa-cloud-sun-rain" id="current-emoji"></i>
             </span>
           </div>
           <div class="col-6">
@@ -62,6 +62,9 @@
           <div class="col-1"></div>
           <div class="col-10">
             <ul class="currentDayData">
+              <li class="weatherDescription" id="weather-description">
+                Cloudy
+              </li>
               <li>
                 Humidity:
                 <span id="current-humidity">
@@ -75,6 +78,12 @@
                   8
                 </span>
                 Km/h
+              </li>
+              <li>
+                Last update:
+                <span id="city-time">
+                  5:39pm
+                </span>
               </li>
             </ul>
           </div>

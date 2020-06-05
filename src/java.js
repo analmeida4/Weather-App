@@ -1,3 +1,58 @@
+// Weather Icon Library
+let iconsLib = [
+  {
+    iconName: "clear sky",
+    class: "fas fa-sun",
+  },
+  {
+    iconName: "few clouds",
+    class: "fas fa-cloud-sun",
+  },
+  {
+    iconName: "scattered clouds",
+    class: "fas fa-cloud",
+  },
+  {
+    iconName: "broken clouds",
+    class: "fas fa-cloud",
+  },
+  {
+    iconName: "shower rain",
+    class: "fas fa-cloud-rain",
+  },
+  {
+    iconName: "light rain",
+    class: "fas fa-cloud-sun-rain",
+  },
+  {
+    iconName: "rain",
+    class: "fas fa-cloud-showers-heavy",
+  },
+  {
+    iconName: "	thunderstorm",
+    class: "fas fa-bolt",
+  },
+  {
+    iconName: "snow",
+    class: "far fa-snowflake",
+  },
+  {
+    iconName: "mist",
+    class: "fas fa-smog",
+  },
+];
+
+function updateIcon(description) {
+  for (i = 0; i < 10; i++) {
+    if (iconsLib[i].iconName == description) {
+      console.log(iconsLib[i].class);
+      let newClass = `${iconsLib[i].class}`;
+      console.log(newClass);
+      return newClass;
+    }
+  }
+}
+
 // Code to fetch the date and display it as desired
 let now = new Date();
 let days = [
@@ -61,7 +116,20 @@ function getFahrenheitTemp() {
 let showFahrenheit = document.querySelector("#fahrenheit-temp");
 showFahrenheit.addEventListener("click", getFahrenheitTemp);
 
-//Code to update name, temperature, humidity and wind on webpage according city user input
+//Code to update data on webpage according city user input
+function transformTime(timeStamp) {
+  let date = new Date(timeStamp);
+  let currentHour = toAmPm(date.getHours());
+  let currentMinutes = date.getMinutes();
+  if (currentMinutes < 10) {
+    currentMinutes = `0${currentMinutes}`;
+  }
+  let reply = `${days[date.getDay()]}, ${currentHour[0]}:${currentMinutes} ${
+    currentHour[1]
+  }`;
+  return reply;
+}
+
 function updateCity(result) {
   document.querySelector("h1").innerHTML = result.data.name;
   document.querySelector(".currentTemp").innerHTML = Math.round(
@@ -72,6 +140,14 @@ function updateCity(result) {
   document.querySelector("#current-wind").innerHTML = Math.round(
     result.data.wind.speed
   );
+  document.querySelector("#city-time").innerHTML = transformTime(
+    result.data.dt * 1000
+  );
+  document.querySelector("#weather-description").innerHTML =
+    result.data.weather[0].description;
+  document
+    .querySelector("#current-emoji")
+    .setAttribute("class", updateIcon(result.data.weather[0].description));
 }
 
 let apiKey = "7682c2be43d876a63c355131eaac1953";

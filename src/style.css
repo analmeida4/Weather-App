@@ -135,3 +135,7 @@ input {
   background-color: #e8c4bc;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
 }
+
+.weatherDescription {
+  text-transform: capitalize;
+}
