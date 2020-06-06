@@ -139,3 +139,12 @@ input {
 .weatherDescription {
   text-transform: capitalize;
 }
+
+.celciusFah .active {
+  color: #2f2e41;
+  cursor: default;
+}
+
+.celciusFah .active:hover {
+  text-decoration: none;
+}

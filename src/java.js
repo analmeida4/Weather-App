@@ -32,12 +32,10 @@ let iconsLib = [
 
 function updateIcon(description) {
   let newVar = description.toString();
-  console.log(typeof newVar);
   if (description == "800") {
     return "fas fa-sun";
   } else {
     newVar = newVar.charAt(0);
-    console.log(newVar);
   }
   for (i = 1; i < 7; i++) {
     if (iconsLib[i].iconName == newVar) {
@@ -85,30 +83,11 @@ function nextDays() {
       nextDayIndex = now.getDay() + i - 7;
     }
     let nextDay = days[nextDayIndex];
-    console.log(nextDayIndex);
     document.querySelector(`#day-${i}`).innerHTML = `${nextDay}`;
   }
 }
 
 nextDays();
-// Code to give current Temperature in Celcius or Fahrenheit when clicked
-function getCelciusTemp() {
-  event.preventDefault();
-  let h2 = document.querySelector(".currentTemp");
-  h2.innerHTML = "17";
-}
-
-let showCelcius = document.querySelector("#celcius-temp");
-showCelcius.addEventListener("click", getCelciusTemp);
-
-function getFahrenheitTemp() {
-  event.preventDefault();
-  let h2 = document.querySelector(".currentTemp");
-  h2.innerHTML = "63";
-}
-
-let showFahrenheit = document.querySelector("#fahrenheit-temp");
-showFahrenheit.addEventListener("click", getFahrenheitTemp);
 
 //Code to update data on webpage according city user input
 function transformTime(timeStamp) {
@@ -142,6 +121,9 @@ function updateCity(result) {
   document
     .querySelector("#current-emoji")
     .setAttribute("class", updateIcon(result.data.weather[0].id));
+  //Code to format Celcius and Fahrenheit links everytime a city update happens, this was the celcius temp displayed matches the formating of the links
+  document.querySelector("#celcius-temp").classList.add("active");
+  document.querySelector("#fahrenheit-temp").classList.remove("active");
 }
 
 let apiKey = "7682c2be43d876a63c355131eaac1953";
@@ -161,7 +143,6 @@ let form = document.querySelector("#city-search-form");
 form.addEventListener("submit", searchCity);
 
 // Code to get data of current Location
-
 function coordUpdateCity(position) {
   let updatedApiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
   axios.get(updatedApiUrl).then(updateCity);
@@ -173,3 +154,37 @@ function getPosition() {
 
 let button = document.querySelector("button");
 button.addEventListener("click", getPosition);
+
+// Code to give current Temperature in Celcius or Fahrenheit when clicked
+let transTemp = [];
+function transformTemp(result) {
+  let celciusTemp = result.data.main.temp;
+  let fahrenheitTemp = (celciusTemp * 9) / 5 + 32;
+  transTemp = [celciusTemp, fahrenheitTemp];
+}
+
+let currentCity = document.querySelector("h1").innerHTML;
+let randomCityApiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${currentCity}&appid=${apiKey}&units=metric`;
+axios.get(randomCityApiUrl).then(transformTemp);
+
+function getFahrenheitTemp(event) {
+  event.preventDefault();
+  document.querySelector("#current-temp").innerHTML = Math.round(transTemp[1]);
+  document.querySelector("#celcius-temp").classList.remove("active");
+  document.querySelector("#fahrenheit-temp").classList.add("active");
+}
+
+function getCelciusTemp(event) {
+  event.preventDefault();
+  document.querySelector("#current-temp").innerHTML = Math.round(transTemp[0]);
+  document.querySelector("#celcius-temp").classList.add("active");
+  document.querySelector("#fahrenheit-temp").classList.remove("active");
+}
+
+document
+  .querySelector("#celcius-temp")
+  .addEventListener("click", getCelciusTemp);
+
+document
+  .querySelector("#fahrenheit-temp")
+  .addEventListener("click", getFahrenheitTemp);
