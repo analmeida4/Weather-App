@@ -132,11 +132,16 @@ let defaultCityApiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Lisbo
 axios.get(defaultCityApiUrl).then(updateCity);
 
 // Code to get data for city according user input
+function errorAlert() {
+  alert("🐱‍👤 Is that city located on Planet Earth? 🌍");
+}
+
 function searchCity(event) {
   event.preventDefault();
   let searchInput = document.querySelector("#city-input-form").value;
   let cityApiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${searchInput}&appid=${apiKey}&units=metric`;
-  axios.get(cityApiUrl).then(updateCity);
+  //Second function inside then only runs if get is not sucessfull
+  axios.get(cityApiUrl).then(updateCity, errorAlert);
 }
 
 let form = document.querySelector("#city-search-form");
