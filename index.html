@@ -88,19 +88,24 @@
             </ul>
           </div>
         </div>
-        <form id="city-search-form">
-          <input
-            type="text"
-            placeholder="Enter city"
-            class="inputCity"
-            id="city-input-form"
-          />
-          <input type="submit" value="GO!" class="searchCity" />
-          <button class="searchCurrentLocation">
-            Current Location
-          </button>
-        </form>
-
+        <div class="row">
+          <div class="col-8">
+            <form id="city-search-form">
+              <input
+                type="text"
+                placeholder="Enter city"
+                class="inputCity"
+                id="city-input-form"
+              />
+              <input type="submit" value="GO!" class="searchCity" />
+            </form>
+          </div>
+          <div class="col-4">
+            <button type="button" class="searchCurrentLocation">
+              Current Location
+            </button>
+          </div>
+        </div>
         <div class="row nextDays">
           <div class="col boxes">
             <span class="weekDay" id="day-1">
