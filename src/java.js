@@ -168,10 +168,6 @@ function transformTemp(result) {
   transTemp = [celciusTemp, fahrenheitTemp];
 }
 
-let currentCity = document.querySelector("h1").innerHTML;
-let randomCityApiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${currentCity}&appid=${apiKey}&units=metric`;
-axios.get(randomCityApiUrl).then(transformTemp);
-
 function getFahrenheitTemp(event) {
   event.preventDefault();
   document.querySelector("#current-temp").innerHTML = Math.round(transTemp[1]);
@@ -193,3 +189,30 @@ document
 document
   .querySelector("#fahrenheit-temp")
   .addEventListener("click", getFahrenheitTemp);
+
+let currentCity = document.querySelector("h1").innerHTML;
+let randomCityApiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${currentCity}&appid=${apiKey}&units=metric`;
+axios.get(randomCityApiUrl).then(transformTemp);
+
+//Code to provide forecast for next 5 days
+//Function to get coordinates of current city displayed
+function getCoordinates(result) {
+  let lon = result.data.coord.lon;
+  let lat = result.data.coord.lat;
+  let forecastApiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly,current&appid=${apiKey}&units=metric`;
+  axios.get(forecastApiUrl).then(getForecast);
+}
+
+//Function to get forecast based on coordinates obtained from current city
+function getForecast(result) {
+  console.log(result.data);
+  for (i = 1; i < 6; i++) {
+    let maxTemp = Math.round(result.data.daily[i].temp.max);
+    let minTemp = Math.round(result.data.daily[i].temp.min);
+    document.querySelector(`#max-day-${i}`).innerHTML = maxTemp;
+    document.querySelector(`#min-day-${i}`).innerHTML = minTemp;
+  }
+}
+
+let coordinatesApiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${currentCity},us&appid=${apiKey}&units=metric`;
+let coordinates = axios.get(coordinatesApiUrl).then(getCoordinates);
