@@ -7,9 +7,9 @@ function updateIcon(description) {
   } else {
     newVar = newVar.charAt(0);
   }
-  for (i = 1; i < 7; i++) {
-    if (iconsLib[i].iconName == newVar) {
-      let newClass = `${iconsLib[i].class}`;
+  for (index = 1; index < 7; index++) {
+    if (iconsLib[index].iconName == newVar) {
+      let newClass = `${iconsLib[index].class}`;
       return newClass;
     }
   }
@@ -55,11 +55,10 @@ function transformTime(timeStamp) {
 //Function to update emojis for forecast days
 function updateEmojis(outcome) {
   let index = outcome[0];
-  let idNumber = outcome[1];
-  let emogiId = `weatherEmogi-${index}`;
-  console.log(emogiId);
-  let newClass = updateIcon(idNumber);
-  document.getElementById(`${emogiId}`).className = `${newClass}`;
+  let newClass = outcome[1];
+  document
+    .querySelector(`#weatherEmogi-${index}`)
+    .setAttribute("class", newClass);
 }
 
 //Function to get forecast based on coordinates obtained from current city
@@ -70,12 +69,9 @@ function getForecast(result) {
     let minTemp = Math.round(result.data.daily[i].temp.min);
     document.querySelector(`#max-day-${i}`).innerHTML = maxTemp;
     document.querySelector(`#min-day-${i}`).innerHTML = minTemp;
-    let desc = result.data.daily[i].weather[0].id;
-    let outcome = [i, desc];
+    let currentClass = updateIcon(result.data.daily[i].weather[0].id);
+    let outcome = [i, currentClass];
     updateEmojis(outcome);
-    if (i === 6) {
-      break;
-    }
   }
 }
 
