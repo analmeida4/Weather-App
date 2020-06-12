@@ -1,5 +1,5 @@
 body {
-  background-image: url(https://images.pexels.com/photos/673535/pexels-photo-673535.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
+  background-image: url(https://images.pexels.com/photos/1415734/pexels-photo-1415734.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
   background-size: cover;
 }
 header {
@@ -15,6 +15,7 @@ footer {
   font-size: 15px;
   text-align: right;
 }
+
 h1,
 .currentTemp,
 .currentDayData {
@@ -25,7 +26,7 @@ h1,
 header,
 footer {
   font-family: "Architects Daughter", cursive;
-  color: #2f2e41;
+  color: #59641a;
 }
 
 .currentTemp {
@@ -41,10 +42,6 @@ form {
 
 ul {
   list-style: none;
-}
-
-img {
-  position: absolute;
 }
 
 input {
@@ -83,9 +80,9 @@ input {
 .boxShadow {
   display: block;
   max-width: 800px;
-  background: white;
+  background: rgba(241, 242, 244, 0.85);
   border-radius: 15px;
-  border: 2px solid #2f2e41;
+  border: 2px solid #59641a;
   margin: 3% auto;
   box-shadow: 15px 15px 25px rgba(0, 0, 0, 0.4);
 }
@@ -94,13 +91,13 @@ input {
   font-size: 50px;
   display: block;
   text-align: right;
-  color: #f7ba49;
+  color: #c3250a;
 }
 
 .weatherEmogi {
   font-size: 35px;
   text-align: center;
-  color: #f7ba49;
+  color: #c3250a;
 }
 
 .searchCurrentLocation {
@@ -111,8 +108,8 @@ input {
 
 .searchCity,
 .searchCurrentLocation {
-  background-color: #e8c4bc;
-  border: 2px solid #2f2e41;
+  background-color: rgba(255, 216, 116, 0.7);
+  border: 2px solid #59641a;
   border-radius: 3px;
   color: #2f2e41;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
@@ -121,8 +118,8 @@ input {
 .searchCity:hover,
 .searchCurrentLocation:hover {
   background-color: #2f2e41;
-  border: 2px solid #e8c4bc;
-  color: #e8c4bc;
+  border: 2px solid rgba(255, 216, 116, 0.7);
+  color: rgba(255, 216, 116, 0.7);
   transition: all 200ms ease-in-out;
   box-shadow: none;
 }
@@ -133,12 +130,12 @@ input {
   padding: 0;
   border-radius: 6px;
   box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
-  border: 2px solid #575a88;
+  border: 2px solid #59641a;
 }
 
 .inputCity {
   border: 2px solid #6a5a42;
-  background-color: #e8c4bc;
+  background-color: rgba(255, 216, 116, 0.7);
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
 }
 
