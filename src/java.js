@@ -63,7 +63,6 @@ function updateEmojis(outcome) {
 
 //Function to get forecast based on coordinates obtained from current city
 function getForecast(result) {
-  console.log(result.data);
   for (i = 1; i < 6; i++) {
     let maxTemp = Math.round(result.data.daily[i].temp.max);
     let minTemp = Math.round(result.data.daily[i].temp.min);
