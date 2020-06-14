@@ -82,6 +82,32 @@ function getCoordinates(result) {
   axios.get(forecastApiUrl).then(getForecast);
 }
 
+//Functions to transform temperature in Celsius or Faherenheit as desired
+function transform(result) {
+  let celciusTemp = result.data.main.temp;
+  let fahrenheitTemp = (celciusTemp * 9) / 5 + 32;
+  transTemp = [celciusTemp, fahrenheitTemp];
+}
+function transformTemp() {
+  let currentCity = document.querySelector("h1").innerHTML;
+  let randomCityApiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${currentCity}&appid=${apiKey}&units=metric`;
+  axios.get(randomCityApiUrl).then(transform);
+}
+
+function getFahrenheitTemp(event) {
+  event.preventDefault();
+  document.querySelector("#current-temp").innerHTML = Math.round(transTemp[1]);
+  document.querySelector("#celcius-temp").classList.remove("active");
+  document.querySelector("#fahrenheit-temp").classList.add("active");
+}
+
+function getCelciusTemp(event) {
+  event.preventDefault();
+  document.querySelector("#current-temp").innerHTML = Math.round(transTemp[0]);
+  document.querySelector("#celcius-temp").classList.add("active");
+  document.querySelector("#fahrenheit-temp").classList.remove("active");
+}
+
 //Function to update city data
 function updateCity(result) {
   document.querySelector("h1").innerHTML = result.data.name;
@@ -101,11 +127,12 @@ function updateCity(result) {
   document
     .querySelector("#current-emoji")
     .setAttribute("class", updateIcon(result.data.weather[0].id));
-  //Code to format Celcius and Fahrenheit links everytime a city update happens, this was the celcius temp displayed matches the formating of the links
+  //Code to format Celcius and Fahrenheit links everytime a city update happens, this makes the celcius temp displayed matches the formating of the links
   document.querySelector("#celcius-temp").classList.add("active");
   document.querySelector("#fahrenheit-temp").classList.remove("active");
   let coordinatesApiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${result.data.name}&appid=${apiKey}&units=metric`;
   axios.get(coordinatesApiUrl).then(getCoordinates);
+  transformTemp();
 }
 
 //Function to alert that city is not available
@@ -130,27 +157,6 @@ function coordUpdateCity(position) {
 
 function getPosition() {
   navigator.geolocation.getCurrentPosition(coordUpdateCity);
-}
-
-//Functions to transform temperature in Celsius or Faherenheit as desired
-function transformTemp(result) {
-  let celciusTemp = result.data.main.temp;
-  let fahrenheitTemp = (celciusTemp * 9) / 5 + 32;
-  transTemp = [celciusTemp, fahrenheitTemp];
-}
-
-function getFahrenheitTemp(event) {
-  event.preventDefault();
-  document.querySelector("#current-temp").innerHTML = Math.round(transTemp[1]);
-  document.querySelector("#celcius-temp").classList.remove("active");
-  document.querySelector("#fahrenheit-temp").classList.add("active");
-}
-
-function getCelciusTemp(event) {
-  event.preventDefault();
-  document.querySelector("#current-temp").innerHTML = Math.round(transTemp[0]);
-  document.querySelector("#celcius-temp").classList.add("active");
-  document.querySelector("#fahrenheit-temp").classList.remove("active");
 }
 
 // Weather Icon Library
@@ -227,6 +233,7 @@ button.addEventListener("click", getPosition);
 
 // Code to give current Temperature in Celcius or Fahrenheit when clicked
 let transTemp = [];
+
 document
   .querySelector("#celcius-temp")
   .addEventListener("click", getCelciusTemp);
@@ -234,7 +241,3 @@ document
 document
   .querySelector("#fahrenheit-temp")
   .addEventListener("click", getFahrenheitTemp);
-
-let currentCity = document.querySelector("h1").innerHTML;
-let randomCityApiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${currentCity}&appid=${apiKey}&units=metric`;
-axios.get(randomCityApiUrl).then(transformTemp);
